@@ -15,6 +15,7 @@ namespace LyeJam
         private Plane _plane = new Plane(Vector3.up, 0);
         private Transform _transform;
         private Renderer _renderer;
+        private PlayerState _state = PlayerState.Idle;
 
         void Start()
         {
@@ -37,16 +38,36 @@ namespace LyeJam
             _input.Update();
         }
 
+        void SetState(PlayerState value)
+        {
+            if (_state == value)
+                return;
+            
+            switch (value)
+            {
+                case PlayerState.Idle: {
+                    _renderer.material.SetColor("_Color", Color.white);
+                } break;
+                case PlayerState.Launching: {
+                    _renderer.material.SetColor("_Color", Color.yellow);
+                } break;
+            }
+            
+            _state = value;
+        }
+
         void UpdateProjection(Vector2 mousePos, float timePassed)
         {
             Ray ray = Camera.main.ScreenPointToRay(mousePos);
 
             if(MouseToPlayerDist(mousePos, timePassed) is {} dist)
             {
+                SetState(PlayerState.Launching);
                 _projection.SimulateTrajectory(_transform.position, dist);
             }
             else
             {
+                SetState(PlayerState.Idle);
                 _projection.ClearTrajectory();
             }
         }
@@ -80,5 +101,11 @@ namespace LyeJam
                 return null;
             }
         }
+    }
+
+    enum PlayerState
+    {
+        Idle,
+        Launching
     }
 }
