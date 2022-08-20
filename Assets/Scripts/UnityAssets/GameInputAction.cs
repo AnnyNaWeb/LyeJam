@@ -46,6 +46,24 @@ namespace LyeJam
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Reset"",
+                    ""type"": ""Button"",
+                    ""id"": ""2aeb9fb8-4851-4e59-892d-8b08efbdd529"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""48e06d52-4844-4153-a9b1-3ef077d206c5"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -70,6 +88,28 @@ namespace LyeJam
                     ""action"": ""MouseMove"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""60fb4ed0-cfdf-4c08-8ad5-bdb57de4920c"",
+                    ""path"": ""<Keyboard>/backspace"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Reset"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""acdcb5e5-d3f8-4134-a44e-bf88cf8fde71"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -80,6 +120,8 @@ namespace LyeJam
             m_Throw = asset.FindActionMap("Throw", throwIfNotFound: true);
             m_Throw_MouseClick = m_Throw.FindAction("MouseClick", throwIfNotFound: true);
             m_Throw_MouseMove = m_Throw.FindAction("MouseMove", throwIfNotFound: true);
+            m_Throw_Reset = m_Throw.FindAction("Reset", throwIfNotFound: true);
+            m_Throw_Pause = m_Throw.FindAction("Pause", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -141,12 +183,16 @@ namespace LyeJam
         private IThrowActions m_ThrowActionsCallbackInterface;
         private readonly InputAction m_Throw_MouseClick;
         private readonly InputAction m_Throw_MouseMove;
+        private readonly InputAction m_Throw_Reset;
+        private readonly InputAction m_Throw_Pause;
         public struct ThrowActions
         {
             private @GameInputAction m_Wrapper;
             public ThrowActions(@GameInputAction wrapper) { m_Wrapper = wrapper; }
             public InputAction @MouseClick => m_Wrapper.m_Throw_MouseClick;
             public InputAction @MouseMove => m_Wrapper.m_Throw_MouseMove;
+            public InputAction @Reset => m_Wrapper.m_Throw_Reset;
+            public InputAction @Pause => m_Wrapper.m_Throw_Pause;
             public InputActionMap Get() { return m_Wrapper.m_Throw; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -162,6 +208,12 @@ namespace LyeJam
                     @MouseMove.started -= m_Wrapper.m_ThrowActionsCallbackInterface.OnMouseMove;
                     @MouseMove.performed -= m_Wrapper.m_ThrowActionsCallbackInterface.OnMouseMove;
                     @MouseMove.canceled -= m_Wrapper.m_ThrowActionsCallbackInterface.OnMouseMove;
+                    @Reset.started -= m_Wrapper.m_ThrowActionsCallbackInterface.OnReset;
+                    @Reset.performed -= m_Wrapper.m_ThrowActionsCallbackInterface.OnReset;
+                    @Reset.canceled -= m_Wrapper.m_ThrowActionsCallbackInterface.OnReset;
+                    @Pause.started -= m_Wrapper.m_ThrowActionsCallbackInterface.OnPause;
+                    @Pause.performed -= m_Wrapper.m_ThrowActionsCallbackInterface.OnPause;
+                    @Pause.canceled -= m_Wrapper.m_ThrowActionsCallbackInterface.OnPause;
                 }
                 m_Wrapper.m_ThrowActionsCallbackInterface = instance;
                 if (instance != null)
@@ -172,6 +224,12 @@ namespace LyeJam
                     @MouseMove.started += instance.OnMouseMove;
                     @MouseMove.performed += instance.OnMouseMove;
                     @MouseMove.canceled += instance.OnMouseMove;
+                    @Reset.started += instance.OnReset;
+                    @Reset.performed += instance.OnReset;
+                    @Reset.canceled += instance.OnReset;
+                    @Pause.started += instance.OnPause;
+                    @Pause.performed += instance.OnPause;
+                    @Pause.canceled += instance.OnPause;
                 }
             }
         }
@@ -180,6 +238,8 @@ namespace LyeJam
         {
             void OnMouseClick(InputAction.CallbackContext context);
             void OnMouseMove(InputAction.CallbackContext context);
+            void OnReset(InputAction.CallbackContext context);
+            void OnPause(InputAction.CallbackContext context);
         }
     }
 }

@@ -4,8 +4,9 @@ namespace LyeJam
 {
     public class Player : MonoBehaviour
     {
-        [SerializeField] Projection _projection;
-        [SerializeField] InputReader _input;
+        [SerializeField] private Projection _projection;
+        [SerializeField] private InputReader _input;
+        [SerializeField] private PlayerSphere _spherePrefab;
 
         [SerializeField] float _timeMax = 2;
         [SerializeField] float _forceMin = 1;
@@ -13,13 +14,22 @@ namespace LyeJam
 
         private Plane _plane = new Plane(Vector3.up, 0);
         private Transform _transform;
+        private Renderer _renderer;
 
         void Start()
         {
             _transform = this.gameObject.transform;
+            _renderer = this.GetComponent<Renderer>();
             _input.Initialize();
+
             _input.OnDragEvent += UpdateProjection;
-            _input.OnSwipeEvent += EndProjection;
+            _input.OnSwipeEvent += Launch;
+        }
+
+        void OnDestroy()
+        {
+            _input.OnDragEvent -= UpdateProjection;
+            _input.OnSwipeEvent -= Launch;
         }
 
         void Update()
@@ -29,16 +39,10 @@ namespace LyeJam
 
         void UpdateProjection(Vector2 mousePos, float timePassed)
         {
-            float distance;
             Ray ray = Camera.main.ScreenPointToRay(mousePos);
 
-            if (_plane.Raycast(ray, out distance))
+            if(MouseToPlayerDist(mousePos, timePassed) is {} dist)
             {
-                Vector3 _worldPosition = ray.GetPoint(distance);
-                var dist = (_transform.position - _worldPosition).normalized;
-
-                dist *= Mathf.Max(_forceMin, (Mathf.Min(timePassed, _timeMax) / _timeMax) * _forceMax);
-
                 _projection.SimulateTrajectory(_transform.position, dist);
             }
             else
@@ -47,9 +51,34 @@ namespace LyeJam
             }
         }
 
-        void EndProjection(Vector2 mousePos, float timePassed)
+        void Launch(Vector2 mousePos, float timePassed)
         {
             _projection.ClearTrajectory();
+            _renderer.enabled = false;
+            var sphere = Instantiate(_spherePrefab, _transform.position, Quaternion.identity);
+
+            if(MouseToPlayerDist(mousePos, timePassed) is {} dist)
+            {
+                sphere.Init(dist, false);
+            }
+        }   
+
+        private Vector3? MouseToPlayerDist(Vector2 mousePos, float timePassed)
+        {
+            Ray ray = Camera.main.ScreenPointToRay(mousePos);
+
+            if (_plane.Raycast(ray, out float distance))
+            {
+                Vector3 _worldPosition = ray.GetPoint(distance);
+                Vector3 dist = (_transform.position - _worldPosition).normalized;
+                dist *= Mathf.Max(_forceMin, (Mathf.Min(timePassed, _timeMax) / _timeMax) * _forceMax);
+
+                return dist;
+            }
+            else
+            {
+                return null;
+            }
         }
     }
 }

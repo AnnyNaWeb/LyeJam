@@ -11,6 +11,7 @@ namespace LyeJam
     {
         public event Action<Vector2, float> OnSwipeEvent;
         public event Action<Vector2, float> OnDragEvent;
+        public event Action OnResetEvent;
 
         private GameInputAction _inputAction;
         private Vector2 _startTouchPosition;
@@ -94,6 +95,19 @@ namespace LyeJam
             {
                 _fingerPos = context.ReadValue<Vector2>();
             }
+        }
+
+        public void OnReset(InputAction.CallbackContext context)
+        {
+            if(context.performed)
+            {
+                OnResetEvent?.Invoke();
+            }
+        }
+
+        public void OnPause(InputAction.CallbackContext context)
+        {
+            throw new NotImplementedException();
         }
     }
 }
