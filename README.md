@@ -1,0 +1,1 @@
+Jogo desenvolvido na Woman Game Jam 2022
