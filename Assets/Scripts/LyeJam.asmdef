@@ -2,7 +2,6 @@
     "name": "LyeJam",
     "rootNamespace": "LyeJam",
     "references": [
-        "GUID:e6236fb1915e14b48b9784c3d5624b94",
         "GUID:75469ad4d38634e559750d17036d5f7c"
     ],
     "includePlatforms": [],
