@@ -1,0 +1,16 @@
+{
+    "name": "LyeJam",
+    "rootNamespace": "LyeJam",
+    "references": [
+        "GUID:e6236fb1915e14b48b9784c3d5624b94"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
