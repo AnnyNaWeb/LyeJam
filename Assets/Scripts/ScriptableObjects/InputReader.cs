@@ -53,6 +53,7 @@ namespace LyeJam
 
         private void OnFingerStartTouch(Finger finger)
         {
+            if (GameManager.Instance.isPaused) return;
             _startTouchPosition = finger.screenPosition;
             _startTime = Time.time;
             _swipePressed = true;
@@ -60,11 +61,13 @@ namespace LyeJam
 
         private void OnFingerEndTouch(Finger finger)
         {
+            if (GameManager.Instance.isPaused) return;
             EndSwipe();
         }
 
         private void OnFingerMove(Finger finger)
         {
+            if (GameManager.Instance.isPaused) return;
             if(_swipePressed)
             {
                 _fingerPos = finger.screenPosition;
@@ -79,6 +82,8 @@ namespace LyeJam
 
         public void OnMouseClick(InputAction.CallbackContext context)
         {
+            if (GameManager.Instance.isPaused) return;
+            
             if(context.started)
             {
                 _startTime = Time.time;
@@ -92,6 +97,7 @@ namespace LyeJam
 
         public void OnMouseMove(InputAction.CallbackContext context)
         {
+            if (GameManager.Instance.isPaused) return;
             if(_swipePressed)
             {
                 _fingerPos = context.ReadValue<Vector2>();
