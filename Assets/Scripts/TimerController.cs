@@ -14,13 +14,15 @@ namespace LyeJam
         public  int metaDestruicao;
         bool fimdefase;
 
+        
         private float minutes;
         private static float seconds = 60;
         void Start()
         {
             fimdefase = false;
             faseAtual = 1;
-            
+
+
         }
         void PlayLevel ()
         {
@@ -86,6 +88,7 @@ namespace LyeJam
 
         void Update()
         {
+           
             if (fimdefase)
             {
                
