@@ -103,7 +103,7 @@ namespace LyeJam
                 {
                     ""name"": """",
                     ""id"": ""acdcb5e5-d3f8-4134-a44e-bf88cf8fde71"",
-                    ""path"": ""<Keyboard>/space"",
+                    ""path"": ""<Keyboard>/enter"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
