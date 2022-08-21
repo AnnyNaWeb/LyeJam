@@ -52,6 +52,7 @@ namespace LyeJam
         public void LoadLevel(int index)
         {
             _winScene.SetActive(false);
+            _loseScene.SetActive(false);
             if(_leveis.Length > index)
             {
                 _currentScene = index;
