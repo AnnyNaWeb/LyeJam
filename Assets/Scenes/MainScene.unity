@@ -811,7 +811,6 @@ MonoBehaviour:
   _timer: {fileID: 660342554}
   _playerPrefab: {fileID: 1867579346413721098, guid: 2530d2e57721b2b42bb12d3b1027f7c6, type: 3}
   _leveis:
-  - {fileID: 7146504445987936476, guid: dc437bdb7e301de4c9293514f84606c6, type: 3}
   - {fileID: 7146504445987936476, guid: 6ce4f84bd3d01c842b51045ee832395b, type: 3}
   - {fileID: 7146504445987936476, guid: eca2f60b7bc85e84a8578d75edf25963, type: 3}
   _winScene: {fileID: 1708996156}
