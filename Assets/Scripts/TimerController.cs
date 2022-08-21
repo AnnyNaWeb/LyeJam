@@ -127,5 +127,11 @@ namespace LyeJam
         {
             fase.text = "Voce está na fase " + faseAtual + " e deve destruir " + metaDestruicao + " objetos do seu humano.";
         }
+
+        public void ResetaAtributos()
+        {
+            totalTime = 0;
+            metaDestruicao = 0;
+        }
     }
 }
