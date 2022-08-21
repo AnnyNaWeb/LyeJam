@@ -1,0 +1,18 @@
+{
+    "name": "LyeJam.Editor",
+    "rootNamespace": "LyeJam.Editor",
+    "references": [
+        "GUID:a7e090258906caa468fe5149e0804fbf"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

@@ -9,13 +9,11 @@ namespace LyeJam
         [SerializeField] private Button _play_Button;
         [SerializeField] private Button _exit_Button;
       
-
         void Start()
         {
-           
-            
             _play_Button.onClick.AddListener(OnPlay);
             _exit_Button.onClick.AddListener(OnExit);
+            SoundPlayer.Instance.SetMusic(SoundPlayer.MusicEnum.Menu);
         }
 
         void OnPlay()
@@ -30,8 +28,5 @@ namespace LyeJam
 #endif
             Application.Quit();
         }
-
-       
-
     }
 }
