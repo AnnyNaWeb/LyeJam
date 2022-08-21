@@ -24,6 +24,7 @@ namespace LyeJam
         void OnDestroy()
         {
             _input.OnResetEvent -= ResetScene;
+            _input.OnPauseEvent -= PauseGame;
         }
 
         void ResetScene()
