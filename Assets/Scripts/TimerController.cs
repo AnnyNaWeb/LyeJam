@@ -54,6 +54,7 @@ namespace LyeJam
         public static void MetaUpdateDown()
         {
             metaDestruicao--;
+            FaseSelecao();
             
 
         }
