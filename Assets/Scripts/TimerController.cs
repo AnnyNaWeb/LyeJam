@@ -39,7 +39,7 @@ namespace LyeJam
             switch (faseAtual)
             {
                 case 1:
-                    metaDestruicao = 10;
+                    metaDestruicao = 1;
                     acabaTempo = 30;
                     break;
                 case 2:
