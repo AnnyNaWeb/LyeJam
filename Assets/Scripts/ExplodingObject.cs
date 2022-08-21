@@ -20,6 +20,7 @@ namespace LyeJam
                     _renderer.enabled = false;
                     _collider.enabled = false;
                     _parts.SetActive(true);
+                    TimerController.MetaUpdateDown();
                 }
             }
         }

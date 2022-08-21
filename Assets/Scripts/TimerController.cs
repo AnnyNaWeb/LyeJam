@@ -10,8 +10,8 @@ namespace LyeJam
         public float totalTime;
         public Text tempo, fase;
         public int acabaTempo;
-        public  int faseAtual;
-        public  int metaDestruicao;
+        public static int faseAtual;
+        public static int metaDestruicao;
         bool fimdefase;
 
         
@@ -48,7 +48,13 @@ namespace LyeJam
                     break;
             }
 
-           
+            
+
+        }
+        public static void MetaUpdateDown()
+        {
+            metaDestruicao--;
+            
 
         }
 
@@ -88,6 +94,7 @@ namespace LyeJam
 
         void Update()
         {
+            
            
             if (fimdefase)
             {

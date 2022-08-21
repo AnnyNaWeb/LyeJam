@@ -2034,8 +2034,6 @@ MonoBehaviour:
   tempo: {fileID: 1934906795}
   fase: {fileID: 220088661}
   acabaTempo: 0
-  faseAtual: 0
-  metaDestruicao: 0
 --- !u!4 &1748170600
 Transform:
   m_ObjectHideFlags: 0

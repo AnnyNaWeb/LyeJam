@@ -17,7 +17,6 @@ namespace LyeJam
         void Start()
         {
             videoplayer = GetComponent<VideoPlayer>();
-            videoplayer.url = url;
             cutscene.SetActive(true);
             gameplay.SetActive(false);
             videoplayer.url = System.IO.Path.Combine(Application.streamingAssetsPath, "cutscene.mp4");
