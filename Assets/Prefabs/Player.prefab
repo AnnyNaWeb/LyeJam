@@ -51,9 +51,9 @@ MonoBehaviour:
   _projection: {fileID: 1867579346413721096}
   _input: {fileID: 11400000, guid: 84f25cfcc256fee4595af17824f43a56, type: 2}
   _spherePrefab: {fileID: 7988700055831483105, guid: 9955c01ba7b674142b1dcf3bc77a8e76, type: 3}
-  _timeMax: 2
+  _timeMax: 1.5
   _forceMin: 3
-  _forceMax: 50
+  _forceMax: 30
 --- !u!114 &1867579346413721096
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -66,7 +66,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d19925fae51457468539247168feea9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _collisions: {fileID: 0}
   _line: {fileID: 1867579346413721097}
   _playerPrefab: {fileID: 7988700055831483105, guid: 9955c01ba7b674142b1dcf3bc77a8e76, type: 3}
   _iterationMaxFrames: 40
