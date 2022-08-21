@@ -13,15 +13,17 @@ namespace LyeJam
         public static int faseAtual;
         public static int metaDestruicao;
         bool fimdefase;
-
+        public GameObject venceu;
+        public static bool ganhou;
         
         private float minutes;
         private static float seconds = 60;
         void Start()
         {
             fimdefase = false;
-            faseAtual = 1;
+            ganhou = false;
             FaseController();
+            venceu.SetActive(false);
 
         }
         void PlayLevel ()
@@ -60,32 +62,44 @@ namespace LyeJam
 
         public void FimdeJogo()
         {
-            if(totalTime >= acabaTempo)
+            if (ganhou)
             {
-               
+                venceu.SetActive(true);
                 fimdefase = true;
-                
-                if(metaDestruicao == 0)
+            }
+            else
+            {
+                if (totalTime >= acabaTempo)
                 {
-                    
+
+                    fimdefase = true;
+
+                    if (metaDestruicao == 0)
+                    {
+
+                        Debug.Log("Vitoria");
+                        ganhou = true;
+                        
+                        //passa pra proxima fase
+
+                    }
+                    else
+                    {
+                        Debug.Log("Derrota");
+                    }
+
+                }
+                if (metaDestruicao == 0)
+                {
                     Debug.Log("Vitoria");
+                    ganhou = true;
+                    
+
+
                     //passa pra proxima fase
-                    faseAtual++;
                 }
-                else
-                {
-                    Debug.Log("Derrota");
-                }
-            
             }
-            if (metaDestruicao == 0)
-            {
-                Debug.Log("Vitoria");
-                fimdefase = true;
-               
-                
-                //passa pra proxima fase
-            }
+           
         }
 
         

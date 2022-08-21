@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+
 namespace LyeJam
 {
     public class GameManager : MonoBehaviour
@@ -27,9 +28,23 @@ namespace LyeJam
             _input.OnPauseEvent -= PauseGame;
         }
 
-        void ResetScene()
+        public void ResetScene()
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            
+            if (TimerController.ganhou)
+            {
+                TimerController.faseAtual++;
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            }
+            else
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
+            }
+        }
+        public void Home()
+        {
+            SceneManager.LoadScene("Menu");
         }
 
         void PauseGame()

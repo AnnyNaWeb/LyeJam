@@ -18,9 +18,10 @@ namespace LyeJam
 
         void OnPlay()
         {
+            TimerController.faseAtual = 1;
             SceneManager.LoadScene("MainScene");
         }
-
+       
         void OnExit()
         {
 #if UNITY_EDITOR

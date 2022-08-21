@@ -43,6 +43,7 @@ namespace LyeJam
             Tempo();
             if (totalTime >= 19)
             {
+                TimerController.faseAtual = 1;
                 gameplay.SetActive(true);
                 Destroy(cutscene);
             }
@@ -60,6 +61,7 @@ namespace LyeJam
         }
         public void Pular()
         {
+            TimerController.faseAtual = 1;
             gameplay.SetActive(true);
             Destroy(cutscene);
         }
