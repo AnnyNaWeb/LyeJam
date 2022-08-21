@@ -10,7 +10,7 @@ namespace LyeJam
         public float totalTime;
         public Text tempo, fase;
         public int acabaTempo;
-        public static int faseAtual;
+        public  int faseAtual;
         public  int metaDestruicao;
         bool fimdefase;
 
@@ -20,7 +20,7 @@ namespace LyeJam
         {
             fimdefase = false;
             faseAtual = 1;
-            FaseController();
+            
         }
         void PlayLevel ()
         {
@@ -29,7 +29,7 @@ namespace LyeJam
             seconds = (int)(totalTime % 60);
             tempo.text = minutes.ToString() + " : " + seconds.ToString();
 
-            
+            FaseController();
         }
 
         void FaseController()
@@ -45,7 +45,8 @@ namespace LyeJam
                     acabaTempo = 50;
                     break;
             }
-            
+
+           
 
         }
 
@@ -61,6 +62,7 @@ namespace LyeJam
                     
                     Debug.Log("Vitoria");
                     //passa pra proxima fase
+                    faseAtual++;
                 }
                 else
                 {
@@ -78,11 +80,7 @@ namespace LyeJam
             }
         }
 
-        void FaseSelecao()
-        {
-
-            fase.text = "Voce está na fase " + faseAtual + " e deve destruir "+metaDestruicao +" objetos do seu humano.";
-        }
+        
 
 
 
@@ -100,6 +98,10 @@ namespace LyeJam
             }
             
             
+        }
+        void FaseSelecao()
+        {
+            fase.text = "Voce está na fase " + faseAtual + " e deve destruir " + metaDestruicao + " objetos do seu humano.";
         }
     }
 }

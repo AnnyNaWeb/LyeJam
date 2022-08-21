@@ -158,8 +158,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -141}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: 8.8213, y: -144.5285}
+  m_SizeDelta: {x: 756.3252, y: 22.9429}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &220088661
 MonoBehaviour:
@@ -1681,6 +1681,7 @@ MonoBehaviour:
   tempo: {fileID: 1934906795}
   fase: {fileID: 220088661}
   acabaTempo: 0
+  metaDestruicao: 0
 --- !u!4 &1748170600
 Transform:
   m_ObjectHideFlags: 0
