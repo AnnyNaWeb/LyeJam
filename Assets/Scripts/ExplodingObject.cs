@@ -11,16 +11,22 @@ namespace LyeJam
 
         void OnCollisionEnter(Collision hit)
         {
+            
             if(hit.transform.gameObject.tag == "Player")
             {
+                
                 var sphere = hit.transform.gameObject.GetComponent<PlayerSphere>();
 
                 if(!sphere.IsGhost)
                 {
+                    TimerController.MetaUpdateDown();
+                    Debug.Log(TimerController.metaDestruicao);
                     _renderer.enabled = false;
                     _collider.enabled = false;
                     _parts.SetActive(true);
-                    TimerController.MetaUpdateDown();
+                    
+
+
                 }
             }
         }
