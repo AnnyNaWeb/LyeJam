@@ -315,7 +315,7 @@ MonoBehaviour:
   _playerPos: {fileID: 6861746259907908041}
   _level_colisions: {fileID: 3102735910008166589}
   destructionGoal: 5
-  time: 30
+  time: 60
 --- !u!1 &5009914239203815991
 GameObject:
   m_ObjectHideFlags: 0
