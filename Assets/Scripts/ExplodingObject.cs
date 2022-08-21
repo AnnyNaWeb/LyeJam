@@ -19,14 +19,10 @@ namespace LyeJam
 
                 if(!sphere.IsGhost)
                 {
-                    TimerController.MetaUpdateDown();
-                    Debug.Log(TimerController.metaDestruicao);
+                    TimerController.AddPoint();
                     _renderer.enabled = false;
                     _collider.enabled = false;
                     _parts.SetActive(true);
-                    
-
-
                 }
             }
         }

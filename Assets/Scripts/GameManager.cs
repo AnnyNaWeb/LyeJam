@@ -11,9 +11,13 @@ namespace LyeJam
         [SerializeField] private Canvas _pauseCanvas;
         [SerializeField] private Button _pauseButton;
         [SerializeField] private GameObject _cutscene;
+        [SerializeField] private TimerController _timer;
 
         [SerializeField] private Player _playerPrefab;
         [SerializeField] private Level[] _leveis;
+
+        [SerializeField] private GameObject _winScene;
+        [SerializeField] private GameObject _loseScene;
 
         public bool isPaused = false;
         public static GameManager Instance;
@@ -29,11 +33,25 @@ namespace LyeJam
             _input.OnPauseEvent += PauseGame;
             _pauseButton.onClick.AddListener(PauseGame);
             _cutscene.SetActive(true);
-            LoadLevel(0);
+
+            _timer.OnWin += () =>
+            {
+                _winScene.SetActive(true);
+                isPaused = true;
+            };
+            _timer.OnLose += () => _loseScene.SetActive(true);
+        }
+
+        public void NextLevel()
+        {
+            _currentScene += 1;
+            isPaused = false;
+            LoadLevel(_currentScene);
         }
 
         public void LoadLevel(int index)
         {
+            _winScene.SetActive(false);
             if(_leveis.Length > index)
             {
                 _currentScene = index;
@@ -43,14 +61,15 @@ namespace LyeJam
                     Destroy(_level.gameObject);
                 }
 
-                if(_player != null)
-                {
-                    Destroy(_player.gameObject);
-                }
-
                 _level = Instantiate( _leveis[index], Vector3.zero, Quaternion.identity);
-                _player = Instantiate(_playerPrefab, _level.PlayerPos.position, _level.PlayerPos.rotation);
-                _player._projection.StartProjection(_level.Collisions);
+                _player = Instantiate(_playerPrefab, _level._playerPos.position, _level._playerPos.rotation, _level.transform);
+                _player._projection.StartProjection(_level._level_colisions);
+                _timer.StartTimer(_level.time, _level.destructionGoal);
+            }
+            else
+            {
+                Debug.Log("You win");
+                Home();
             }
         }
 
@@ -67,6 +86,7 @@ namespace LyeJam
         
         public void Home()
         {
+            Projection.RemoveSimulation();
             SceneManager.LoadScene("Menu");
         }
 

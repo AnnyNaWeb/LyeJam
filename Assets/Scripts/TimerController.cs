@@ -1,139 +1,76 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
+using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace LyeJam
 {
     public class TimerController : MonoBehaviour
     {
-        public float totalTime;
-        public Text tempo, fase;
-        public int acabaTempo;
-        public static int faseAtual;
-        public static int metaDestruicao;
-        bool fimdefase;
-        public GameObject venceu, perdeu;
-        public static bool ganhou;
+        public TextMeshProUGUI tempo, fase;
         
-        private float minutes;
-        private static float seconds = 60;
-        void Start()
-        {
-            fimdefase = false;
-            ganhou = false;
-            FaseController();
-            venceu.SetActive(false);
-            perdeu.SetActive(false);
-        }
-        void PlayLevel ()
-        {
-            totalTime += Time.deltaTime;
-            minutes = (int)(totalTime / 60);
-            seconds = (int)(totalTime % 60);
-            tempo.text = minutes.ToString() + " : " + seconds.ToString();
-
-           
-        }
-
-        void FaseController()
-        {
-            switch (faseAtual)
-            {
-                case 1:
-                    metaDestruicao = 1;
-                    acabaTempo = 30;
-                    break;
-                case 2:
-                    metaDestruicao = 15;
-                    acabaTempo = 50;
-                    break;
-            }
-
-            
-
-        }
-        public static void MetaUpdateDown()
-        {
-            metaDestruicao = metaDestruicao - 1;
-            
-
-        }
-
-        public void FimdeJogo()
-        {
-            if (ganhou)
-            {
-                venceu.SetActive(true);
-                fimdefase = true;
-            }
-            else
-            {
-                if (totalTime >= acabaTempo)
-                {
-
-                    fimdefase = true;
-
-                    if (metaDestruicao == 0)
-                    {
-
-                        Debug.Log("Vitoria");
-                        ganhou = true;
-                        
-                        //passa pra proxima fase
-
-                    }
-                    else
-                    {
-                        Debug.Log("Derrota");
-                        ganhou = false;
-                        perdeu.SetActive(true);
-                    }
-
-                }
-                if (metaDestruicao == 0)
-                {
-                    Debug.Log("Vitoria");
-                    ganhou = true;
-                    
-
-
-                    //passa pra proxima fase
-                }
-            }
-           
-        }
-
+        private float totalTime;
+        private bool fimdefase;
+        private bool ganhou;
+        private bool active = false;
         
+        private int metaDestruicao;
+        private static int destruicao;
+        private int acabaTempo;
 
+        public Action OnWin;
+        public Action OnLose;
 
+        public void StartTimer(int timer, int meta)
+        {
+            metaDestruicao = meta;
+            acabaTempo = timer;
+            totalTime = 0;
+            destruicao = 0;
+
+            active = true;
+        }
+
+        public static void AddPoint()
+        {
+            destruicao += 1;
+        }
 
         void Update()
         {
-            
-           
-            if (fimdefase)
+            if (active && !fimdefase)
             {
-               
+                UpdateText();
+                CheckTimeAndMeta();
             }
-            else
-            {
-                FaseSelecao();
-                PlayLevel();
-                FimdeJogo();
-            }
-            
-            
-        }
-        void FaseSelecao()
-        {
-            fase.text = "Voce está na fase " + faseAtual + " e deve destruir " + metaDestruicao + " objetos do seu humano.";
         }
 
-        public void ResetaAtributos()
+        void UpdateText()
         {
-            totalTime = 0;
-            metaDestruicao = 0;
+            fase.text = $"{destruicao}/{metaDestruicao}";
+
+            if(!active) return;
+
+            totalTime += Time.deltaTime;
+            var rest = acabaTempo - totalTime;
+            float minutes = (int)(rest / 60);
+            float seconds = (int)(rest % 60);
+            tempo.text = minutes.ToString() + " : " + seconds.ToString();
+        }
+
+        public void CheckTimeAndMeta()
+        {
+            if(!active) return;
+
+            if (totalTime >= acabaTempo)
+            {
+                active = false;
+                OnLose?.Invoke();
+            }
+            if (destruicao == metaDestruicao)
+            {
+                active = false;
+                OnWin?.Invoke();
+            }
         }
     }
 }

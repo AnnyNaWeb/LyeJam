@@ -106,6 +106,7 @@ namespace LyeJam
 
         public void OnReset(InputAction.CallbackContext context)
         {
+            if (GameManager.Instance.isPaused) return;
             if(context.performed)
             {
                 OnResetEvent?.Invoke();

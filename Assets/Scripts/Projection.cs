@@ -24,7 +24,7 @@ namespace LyeJam
             if(_simulationScene is {} _scn)
             {
                 scene = _scn;
-                foreach (var item in _simulationScene?.GetRootGameObjects())
+                foreach (var item in _scn.GetRootGameObjects())
                 {
                     Destroy(item);
                 }
@@ -64,6 +64,11 @@ namespace LyeJam
         public void ClearTrajectory()
         {
             _line.positionCount = 0;
+        }
+
+        public static void RemoveSimulation()
+        {
+            _simulationScene = null;
         }
     }
 }
