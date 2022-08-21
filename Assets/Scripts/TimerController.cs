@@ -45,6 +45,7 @@ namespace LyeJam
                     acabaTempo = 50;
                     break;
             }
+            
 
         }
 
@@ -80,7 +81,7 @@ namespace LyeJam
         void FaseSelecao()
         {
 
-            fase.text = "Voce está na fase " + faseAtual + " e deve destruir "+metaDestruicao +"objetos do seu humano.";
+            fase.text = "Voce está na fase " + faseAtual + " e deve destruir "+metaDestruicao +" objetos do seu humano.";
         }
 
 
@@ -93,6 +94,7 @@ namespace LyeJam
             }
             else
             {
+                FaseSelecao();
                 PlayLevel();
                 FimdeJogo();
             }
