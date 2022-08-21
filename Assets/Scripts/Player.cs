@@ -4,7 +4,7 @@ namespace LyeJam
 {
     public class Player : MonoBehaviour
     {
-        [SerializeField] private Projection _projection;
+        public Projection _projection;
         [SerializeField] private InputReader _input;
         [SerializeField] private PlayerSphere _spherePrefab;
 
@@ -76,7 +76,7 @@ namespace LyeJam
         {
             _projection.ClearTrajectory();
             _renderer.enabled = false;
-            var sphere = Instantiate(_spherePrefab, _transform.position, Quaternion.identity);
+            var sphere = Instantiate(_spherePrefab, _transform.position, Quaternion.identity, this.transform);
 
             if(MouseToPlayerDist(mousePos, timePassed) is {} dist)
             {

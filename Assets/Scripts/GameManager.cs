@@ -10,9 +10,17 @@ namespace LyeJam
         [SerializeField] private InputReader _input;
         [SerializeField] private Canvas _pauseCanvas;
         [SerializeField] private Button _pauseButton;
+        [SerializeField] private GameObject _cutscene;
+
+        [SerializeField] private Player _playerPrefab;
+        [SerializeField] private Level[] _leveis;
 
         public bool isPaused = false;
         public static GameManager Instance;
+
+        private Player _player;
+        private Level _level;
+        private int _currentScene = 0;
 
         void Start()
         {
@@ -20,6 +28,30 @@ namespace LyeJam
             _input.OnResetEvent += ResetScene;
             _input.OnPauseEvent += PauseGame;
             _pauseButton.onClick.AddListener(PauseGame);
+            _cutscene.SetActive(true);
+            LoadLevel(0);
+        }
+
+        public void LoadLevel(int index)
+        {
+            if(_leveis.Length > index)
+            {
+                _currentScene = index;
+
+                if(_level != null)
+                {
+                    Destroy(_level.gameObject);
+                }
+
+                if(_player != null)
+                {
+                    Destroy(_player.gameObject);
+                }
+
+                _level = Instantiate( _leveis[index], Vector3.zero, Quaternion.identity);
+                _player = Instantiate(_playerPrefab, _level.PlayerPos.position, _level.PlayerPos.rotation);
+                _player._projection.StartProjection(_level.Collisions);
+            }
         }
 
         void OnDestroy()
@@ -30,18 +62,9 @@ namespace LyeJam
 
         public void ResetScene()
         {
-            
-            if (TimerController.ganhou)
-            {
-                TimerController.faseAtual++;
-                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-            }
-            else
-            {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-
-            }
+            LoadLevel(_currentScene);
         }
+        
         public void Home()
         {
             SceneManager.LoadScene("Menu");
