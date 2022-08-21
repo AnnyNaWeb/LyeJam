@@ -20,6 +20,15 @@ namespace LyeJam
         public enum MusicEnum
         {
             Menu,
+            ingame,
+            ingameGlitch,
+            vitoria,
+            derrota,
+            pause,
+            endLevel1,
+            endLevel2,
+            endLevel3,
+            endLevel4,
         }
         
         public void InitializeAudioPlayer()
