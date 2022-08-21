@@ -497,8 +497,6 @@ MonoBehaviour:
   tempo: {fileID: 4623486968132087347}
   fase: {fileID: 4623486968437879501}
   acabaTempo: 0
-  faseAtual: 0
-  metaDestruicao: 0
 --- !u!1 &4623486968835629302
 GameObject:
   m_ObjectHideFlags: 0
