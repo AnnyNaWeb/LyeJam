@@ -11,7 +11,7 @@ namespace LyeJam
 
         void Start()
         {
-            Text timer = gameObject.GetComponent<Timer>();
+            
             _play_Button.onClick.AddListener(OnPlay);
             _exit_Button.onClick.AddListener(OnExit);
         }
