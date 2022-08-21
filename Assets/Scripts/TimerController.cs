@@ -58,7 +58,7 @@ namespace LyeJam
 
         }
 
-        void FimdeJogo()
+        public void FimdeJogo()
         {
             if(totalTime >= acabaTempo)
             {
