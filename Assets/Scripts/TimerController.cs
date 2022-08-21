@@ -21,7 +21,7 @@ namespace LyeJam
         {
             fimdefase = false;
             faseAtual = 1;
-
+            FaseController();
 
         }
         void PlayLevel ()
@@ -31,7 +31,7 @@ namespace LyeJam
             seconds = (int)(totalTime % 60);
             tempo.text = minutes.ToString() + " : " + seconds.ToString();
 
-            FaseController();
+           
         }
 
         void FaseController()
@@ -39,7 +39,7 @@ namespace LyeJam
             switch (faseAtual)
             {
                 case 1:
-                    metaDestruicao = 10;
+                    metaDestruicao = 1;
                     acabaTempo = 30;
                     break;
                 case 2:
@@ -53,7 +53,7 @@ namespace LyeJam
         }
         public static void MetaUpdateDown()
         {
-            metaDestruicao--;
+            metaDestruicao = metaDestruicao - 1;
             
 
         }
