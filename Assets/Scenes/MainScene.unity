@@ -742,6 +742,11 @@ MonoBehaviour:
     m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: Pular
+--- !u!1 &1115325849 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3344840895129588762, guid: 410bb45e1952cc24d902a9d0fd98e634, type: 3}
+  m_PrefabInstance: {fileID: 1708996152}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1240708903
 GameObject:
   m_ObjectHideFlags: 0
@@ -834,6 +839,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1875449564783260420, guid: 410bb45e1952cc24d902a9d0fd98e634, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1240708904}
     - target: {fileID: 2108973423063331261, guid: 410bb45e1952cc24d902a9d0fd98e634, type: 3}
       propertyPath: m_Name
       value: VitoriaCanvas
@@ -850,6 +859,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1240708904}
+    - target: {fileID: 3344840895129588762, guid: 410bb45e1952cc24d902a9d0fd98e634, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4623486967379565248, guid: 410bb45e1952cc24d902a9d0fd98e634, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -915,6 +928,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4623486967950052607, guid: 410bb45e1952cc24d902a9d0fd98e634, type: 3}
+      propertyPath: perdeu
+      value: 
+      objectReference: {fileID: 1115325849}
+    - target: {fileID: 4623486967950052607, guid: 410bb45e1952cc24d902a9d0fd98e634, type: 3}
       propertyPath: venceu
       value: 
       objectReference: {fileID: 2121197046}
@@ -942,6 +959,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: 847.429
       objectReference: {fileID: 0}
+    - target: {fileID: 5569592181024101747, guid: 410bb45e1952cc24d902a9d0fd98e634, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1240708904}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 410bb45e1952cc24d902a9d0fd98e634, type: 3}
 --- !u!114 &1708996153 stripped

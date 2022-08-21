@@ -13,7 +13,7 @@ namespace LyeJam
         public static int faseAtual;
         public static int metaDestruicao;
         bool fimdefase;
-        public GameObject venceu;
+        public GameObject venceu, perdeu;
         public static bool ganhou;
         
         private float minutes;
@@ -24,7 +24,7 @@ namespace LyeJam
             ganhou = false;
             FaseController();
             venceu.SetActive(false);
-
+            perdeu.SetActive(false);
         }
         void PlayLevel ()
         {
@@ -86,6 +86,8 @@ namespace LyeJam
                     else
                     {
                         Debug.Log("Derrota");
+                        ganhou = false;
+                        perdeu.SetActive(true);
                     }
 
                 }
