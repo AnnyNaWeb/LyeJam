@@ -7,6 +7,7 @@ namespace LyeJam
         public Projection _projection;
         [SerializeField] private InputReader _input;
         [SerializeField] private PlayerSphere _spherePrefab;
+        [SerializeField] private GameObject _tutamesh;
 
         [SerializeField] float _timeMax = 2;
         [SerializeField] float _forceMin = 1;
@@ -14,7 +15,6 @@ namespace LyeJam
 
         private Plane _plane = new Plane(Vector3.up, 0);
         private Transform _transform;
-        private Renderer _renderer;
         private PlayerState _state = PlayerState.Idle;
 
         private PlayerSphere _lastTuta;
@@ -23,7 +23,6 @@ namespace LyeJam
         void Start()
         {
             _transform = this.gameObject.transform;
-            _renderer = this.GetComponent<Renderer>();
             _input.Initialize();
 
             _input.OnDragEvent += UpdateProjection;
@@ -54,10 +53,10 @@ namespace LyeJam
                     if(spawnedFirst){
                         Destroy(_lastTuta.gameObject);
                     }
-                    _renderer.enabled = true;
+                    _tutamesh.SetActive(true);
                 } break;
                 case PlayerState.Rolling: {
-                    _renderer.enabled = false;
+                    _tutamesh.SetActive(false);
                 } break;
 
             }
