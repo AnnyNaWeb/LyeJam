@@ -246,7 +246,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   url: 
-  totalTime: 0
   gameplay: {fileID: 1679242414}
   cutscene: {fileID: 1533567813}
 --- !u!114 &309751131 stripped
