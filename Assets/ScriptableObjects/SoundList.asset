@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05ea146672293b94e8d3a80123c89058, type: 3}
   m_Name: SoundList
   m_EditorClassIdentifier: 
-  AudioClips: []
+  AudioClips:
+  - {fileID: 8300000, guid: 45ec177c5af26d941a9c0c4e2955d559, type: 3}
   Musics:
   - {fileID: 8300000, guid: 96a9c9f8fa0f1ec469a3ecefca37676a, type: 3}
   - {fileID: 8300000, guid: 9df77f0d2f848df4f9b1a3c763e5d970, type: 3}

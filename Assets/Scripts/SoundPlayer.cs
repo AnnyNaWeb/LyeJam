@@ -14,7 +14,7 @@ namespace LyeJam
 
         public enum AudioEnum
         {
-            
+            Madeira,
         }
 
         public enum MusicEnum

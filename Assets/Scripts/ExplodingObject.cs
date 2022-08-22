@@ -20,6 +20,7 @@ namespace LyeJam
                     TimerController.AddPoint();
                     _renderer.enabled = false;
                     _collider.enabled = false;
+                    SoundPlayer.Instance.PlayAudio(SoundPlayer.AudioEnum.Madeira);
                     _parts.SetActive(true);
                 }
             }
