@@ -17,6 +17,9 @@ namespace LyeJam
         private Renderer _renderer;
         private PlayerState _state = PlayerState.Idle;
 
+        private PlayerSphere _lastTuta;
+        bool spawnedFirst = false;
+
         void Start()
         {
             _transform = this.gameObject.transform;
@@ -46,11 +49,17 @@ namespace LyeJam
             switch (value)
             {
                 case PlayerState.Idle: {
-                    _renderer.material.SetColor("_Color", Color.white);
                 } break;
                 case PlayerState.Launching: {
-                    _renderer.material.SetColor("_Color", Color.yellow);
+                    if(spawnedFirst){
+                        Destroy(_lastTuta.gameObject);
+                    }
+                    _renderer.enabled = true;
                 } break;
+                case PlayerState.Rolling: {
+                    _renderer.enabled = false;
+                } break;
+
             }
             
             _state = value;
@@ -75,12 +84,13 @@ namespace LyeJam
         void Launch(Vector2 mousePos, float timePassed)
         {
             _projection.ClearTrajectory();
-            _renderer.enabled = false;
-            var sphere = Instantiate(_spherePrefab, _transform.position, Quaternion.identity, this.transform);
+            SetState(PlayerState.Rolling);
+            _lastTuta = Instantiate(_spherePrefab, _transform.position, Quaternion.identity, this.transform);
+            spawnedFirst = true;
 
             if(MouseToPlayerDist(mousePos, timePassed) is {} dist)
             {
-                sphere.Init(dist, false);
+                _lastTuta.Init(dist, false);
             }
         }   
 
@@ -106,6 +116,7 @@ namespace LyeJam
     enum PlayerState
     {
         Idle,
-        Launching
+        Launching,
+        Rolling,
     }
 }

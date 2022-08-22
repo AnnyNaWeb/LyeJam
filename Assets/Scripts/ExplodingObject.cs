@@ -15,7 +15,7 @@ namespace LyeJam
             {
                 var sphere = hit.transform.gameObject.GetComponent<PlayerSphere>();
 
-                if(!sphere.IsGhost)
+                if(sphere != null && !sphere.IsGhost)
                 {
                     TimerController.AddPoint();
                     _renderer.enabled = false;
