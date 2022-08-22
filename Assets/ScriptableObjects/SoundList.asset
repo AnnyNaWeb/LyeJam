@@ -15,3 +15,12 @@ MonoBehaviour:
   AudioClips: []
   Musics:
   - {fileID: 8300000, guid: 96a9c9f8fa0f1ec469a3ecefca37676a, type: 3}
+  - {fileID: 8300000, guid: 9df77f0d2f848df4f9b1a3c763e5d970, type: 3}
+  - {fileID: 8300000, guid: a6b005ca1cbfc3940b4c9cbd559b4756, type: 3}
+  - {fileID: 8300000, guid: d0efabd4d47e19d4689473dc8fcb3b17, type: 3}
+  - {fileID: 8300000, guid: 71d6ea6bf4cebb047a5ff38f8e378cde, type: 3}
+  - {fileID: 8300000, guid: 5e6c1e54c883ecb4288e9604f98ccd14, type: 3}
+  - {fileID: 8300000, guid: a2e4c859eea00594ca1506ebf3e6ef2a, type: 3}
+  - {fileID: 8300000, guid: 55a8b26d4d06124408315217c49103cf, type: 3}
+  - {fileID: 8300000, guid: f7b2e32f589ebfb47b267ca6f2fe7cf1, type: 3}
+  - {fileID: 8300000, guid: 7b33dd4430502484c80856e8f3d69720, type: 3}
