@@ -15,6 +15,8 @@ namespace LyeJam
         public enum AudioEnum
         {
             Madeira,
+            Tick,
+            TutaVoz,
         }
 
         public enum MusicEnum

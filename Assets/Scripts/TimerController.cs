@@ -55,6 +55,11 @@ namespace LyeJam
             float minutes = (int)(rest / 60);
             float seconds = (int)(rest % 60);
             tempo.text = minutes.ToString() + " : " + seconds.ToString();
+
+            if(totalTime == (acabaTempo - 5))
+            {
+                SoundPlayer.Instance.PlayAudio(SoundPlayer.AudioEnum.Tick);
+            }
         }
 
         public void CheckTimeAndMeta()

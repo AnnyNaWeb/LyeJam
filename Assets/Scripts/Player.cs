@@ -24,6 +24,7 @@ namespace LyeJam
         {
             _transform = this.gameObject.transform;
             _input.Initialize();
+            SoundPlayer.Instance.PlayAudio(SoundPlayer.AudioEnum.TutaVoz);
 
             _input.OnDragEvent += UpdateProjection;
             _input.OnSwipeEvent += Launch;
